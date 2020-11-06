@@ -9,7 +9,7 @@ const FilterCard = ({
 
     return (
         <div className="filter-card">
-            <h1>Filters</h1>
+            <h2>Filters</h2>
             <div style={{ textAlign: 'center' }}>
                 <FilterSubHeading text="Launch Year" />
 
