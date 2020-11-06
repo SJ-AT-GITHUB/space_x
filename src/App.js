@@ -1,13 +1,6 @@
-import './App.css';
+import React from 'react';
+import { LaunchList } from '../src/Scene';
 
-function App() {
-  return (
-    <div>
-        <p>
-          Edit and save to reload.
-        </p>
-    </div>
-  );
-}
+const App = () => <LaunchList />;
 
 export default App;
