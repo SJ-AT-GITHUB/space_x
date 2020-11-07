@@ -17,7 +17,6 @@ const LaunchList = () => {
 
     useEffect(() => {
         const searchString = getSearchString({ launchYear, hasSuccessfullyLaunched, hasSuccessfullyLanded });
-        console.log('#1', searchString);
         history.push(searchString.replace('&', '?'))
     }, [launchYear, hasSuccessfullyLaunched, hasSuccessfullyLanded, history]);
 
@@ -25,14 +24,10 @@ const LaunchList = () => {
     useEffect(() => {
         const fetchData = async () => {
             const searchString = loaction.search;
-            console.log('#2', searchString);
                 setLaunchData((await getSpaceXLaunches(searchString.replace('?', '&'))).data)
         }
         fetchData();
     }, [loaction]);
-
-    console.log('state:::', { launchYear, hasSuccessfullyLaunched, hasSuccessfullyLanded });
-
 
     return (
         <>
