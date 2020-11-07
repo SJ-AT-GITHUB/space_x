@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const FilterSubHeading = ({ text }) => {
     return (
@@ -7,6 +8,10 @@ const FilterSubHeading = ({ text }) => {
         <hr style={{ width: '70%' }} />
     </div>
     );
+}
+
+FilterSubHeading.propTyes = {
+    text: PropTypes.string.isRequired,
 }
 
 export default FilterSubHeading;

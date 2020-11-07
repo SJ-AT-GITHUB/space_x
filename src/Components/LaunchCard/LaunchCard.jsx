@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './launchCard.css';
 import LaunchAttribute from './LaunchAttribute';
 
@@ -34,6 +35,10 @@ const LaunchCard = ({ data }) => {
       />
     </div>
   );
+}
+
+LaunchCard.propTyes = {
+  data: PropTypes.objectOf(PropTypes.any).isRequired,
 }
 
 export default LaunchCard;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const ButtonColumns = ({ buttonTexts, onClick, selected }) =>
     buttonTexts.map((text, index) => (
@@ -9,6 +10,12 @@ const ButtonColumns = ({ buttonTexts, onClick, selected }) =>
             {String(text)}
         </button>
     ));
+
+ButtonColumns.propTyes = {
+    selected: PropTypes.oneOf([PropTypes.bool, PropTypes.number]).isRequired,
+    buttonTexts: PropTypes.arrayOf(PropTypes.oneOf([PropTypes.bool, PropTypes.number])).isRequired,
+    onClick: PropTypes.func.isRequired,
+}
 
 export default ButtonColumns;
 

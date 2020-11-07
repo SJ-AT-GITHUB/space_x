@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './filterCard.css';
 import ButtonColumns from './ButtonColumns';
 import FilterSubHeading from './FilterSubHeading';
@@ -37,6 +38,15 @@ const FilterCard = ({
             </div>
         </div>
     );
+}
+
+FilterCard.propTyes = {
+    launchYear: PropTypes.number.isRequired,
+    hasSuccessfullyLaunched: PropTypes.bool.isRequired,
+    hasSuccessfullyLanded: PropTypes.bool.isRequired,
+    setLaunchYear: PropTypes.func.isRequired,
+    setHasSuccessfullyLaunched: PropTypes.func.isRequired,
+    setHasSuccessfullyLanded: PropTypes.func.isRequired,
 }
 
 export default FilterCard;
