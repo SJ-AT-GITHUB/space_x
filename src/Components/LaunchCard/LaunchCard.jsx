@@ -17,8 +17,8 @@ const LaunchCard = ({ data }) => {
     <div className="launch-card">
       <div className="launch-img">
         <img
-          width="150px"
-          height="170px"
+          width="100px"
+          height="120px"
           component="img"
           alt="Mission_Image"
           src={mission_patch_small}

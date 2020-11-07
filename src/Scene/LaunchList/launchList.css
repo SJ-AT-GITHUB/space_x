@@ -30,6 +30,16 @@
       flex: 50%;
       max-width: 50%;
     }
+
+    .filter-column {
+      flex: 33%;
+      max-width: 33%;
+    }
+  
+    .launch-column {
+      flex: 66%;
+      max-width: 66%;
+    }
   }
   
   /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
