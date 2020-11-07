@@ -4,6 +4,7 @@ import getSpaceXLaunches from '../../DataSource/spaceXAPI';
 import './launchList.css';
 import { splitArr, getSearchString } from '../../helpers';
 import { useHistory, useLocation } from "react-router-dom";
+import useDidUpdateEffect from '../../customHooks';
 
 
 const LaunchList = () => {
@@ -15,7 +16,7 @@ const LaunchList = () => {
     const history = useHistory();
     const loaction = useLocation();
 
-    useEffect(() => {
+    useDidUpdateEffect(() => {
         const searchString = getSearchString({ launchYear, hasSuccessfullyLaunched, hasSuccessfullyLanded });
         history.push(searchString.replace('&', '?'))
     }, [launchYear, hasSuccessfullyLaunched, hasSuccessfullyLanded, history]);
