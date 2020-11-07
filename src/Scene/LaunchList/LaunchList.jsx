@@ -1,52 +1,47 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { LaunchCard, FilterCard } from '../../Components';
 import getSpaceXLaunches from '../../DataSource/spaceXAPI';
 import './launchList.css';
 import { splitArr, getSearchString } from '../../helpers';
 import { useHistory, useLocation } from "react-router-dom";
 import useDidUpdateEffect from '../../customHooks';
+import { useDispatch, useSelector } from 'react-redux';
+import ACTIONS from '../../redux/actions';
 
 
 const LaunchList = () => {
-    const [launchYear, setLaunchYear] = useState();
-    const [hasSuccessfullyLaunched, setHasSuccessfullyLaunched] = useState();
-    const [hasSuccessfullyLanded, setHasSuccessfullyLanded] = useState();
-    const [launchData, setLaunchData] = useState([]);
-
     const history = useHistory();
     const loaction = useLocation();
+    const dispatch = useDispatch();
+
+    const {filter, data} = useSelector(store => store)
 
     useDidUpdateEffect(() => {
-        const searchString = getSearchString({ launchYear, hasSuccessfullyLaunched, hasSuccessfullyLanded });
+        const searchString = getSearchString(filter);
         history.push(searchString.replace('&', '?'))
-    }, [launchYear, hasSuccessfullyLaunched, hasSuccessfullyLanded, history]);
+    }, [filter, history]);
 
 
     useEffect(() => {
         const fetchData = async () => {
             const searchString = loaction.search;
-                setLaunchData((await getSpaceXLaunches(searchString.replace('?', '&'))).data)
+            dispatch(ACTIONS.setLaunchData((await getSpaceXLaunches(searchString.replace('?', '&'))).data))
         }
         fetchData();
-    }, [loaction]);
+    }, [loaction, dispatch]);
 
     return (
         <>
             <h1>SpaceX Launch Programs</h1>
             <div className="main-row">
                 <div className="filter-column">
-                    <FilterCard
-                        {...{
-                            launchYear, hasSuccessfullyLaunched, hasSuccessfullyLanded,
-                            setLaunchYear, setHasSuccessfullyLaunched, setHasSuccessfullyLanded,
-                        }}
-                    />
+                    <FilterCard />
                 </div>
                 <div className="launch-column">
                     <div className="row">
-                        {splitArr(launchData).map((chunk, i) => (
+                        {splitArr(data).map((chunk, i) => (
                             <div className="column" key={i}>
-                                {chunk.map((data) => <LaunchCard data={data} key={data.flight_number} />)}
+                                {chunk.map((Data) => <LaunchCard data={Data} key={data.flight_number} />)}
                             </div>
                         ))}
                     </div>

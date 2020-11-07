@@ -17,14 +17,16 @@ const LaunchCard = ({ data }) => {
     <div className="launch-card">
       <div className="launch-img">
         <img
+          width="150px"
+          height="170px"
           component="img"
           alt="Mission_Image"
           src={mission_patch_small}
         />
       </div>
-      <h1 className="launchNo">
+      <h3 className="launchNo">
         {`${mission_name} #${flight_number}`}
-      </h1>
+      </h3>
       <LaunchAttribute
         attributes={{
           'Mission Ids': mission_id,
